@@ -14,6 +14,10 @@ keywords = ["2d", "grid", "data-structure", "matrix", "no_std"]
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
 
+[features]
+default = ["std"]
+std = []
+
 [dependencies]
 
 [dev-dependencies]
@@ -25,7 +29,7 @@ unsafe_code = "deny"
 private_interfaces = "warn"
 private_bounds = "warn"
 rust_2018_idioms = "warn"
-missing_docs = "allow"
+missing_docs = "warn"
 
 [lints.clippy]
 exhaustive_enums = "warn"
