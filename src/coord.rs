@@ -13,16 +13,14 @@ impl Coord {
         Self { x, y }
     }
 
-    #[cfg(test)]
     #[must_use]
-    pub(crate) fn from_index(grid_width: usize, index: usize) -> Option<Self> {
-        Some(Self {
-            x: (index % grid_width).try_into().ok()?,
-            y: (index / grid_width).try_into().ok()?,
-        })
+    pub(crate) fn from_index(grid_width: usize, index: usize) -> Self {
+        Self {
+            x: (index % grid_width).try_into().unwrap(),
+            y: (index / grid_width).try_into().unwrap(),
+        }
     }
 
-    #[cfg(test)]
     #[must_use]
     pub(crate) fn into_index(self, grid_width: usize) -> Option<usize> {
         let x: usize = self.x.try_into().ok()?;
@@ -77,7 +75,7 @@ mod tests {
         const WIDTH: usize = 150;
         let coord = coord.into();
         let index = coord.into_index(WIDTH).unwrap();
-        assert_eq!(coord, Coord::from_index(WIDTH, index).unwrap());
+        assert_eq!(coord, Coord::from_index(WIDTH, index));
     }
 
     #[test]

@@ -22,3 +22,32 @@ pub struct Grid<T> {
     cells: Vec<T>,
     width: usize,
 }
+
+impl<T: Default> Grid<T> {
+    /// Create a grid using the default value of `T` for each cell
+    #[must_use]
+    pub fn new(width: usize, height: usize) -> Self {
+        Self::new_with(width, height, |_| T::default())
+    }
+}
+
+impl<T> Grid<T> {
+    /// Create a grid using `init_cell` function for each cell
+    #[must_use]
+    pub fn new_with(width: usize, height: usize, init_cell: impl FnMut(Coord) -> T) -> Self {
+        let cells = (0..(width * height))
+            .map(|i| Coord::from_index(width, i))
+            .map(init_cell)
+            .collect();
+        Self { cells, width }
+    }
+
+    /// Access the cell at `coord`
+    ///
+    /// Returns `None` if the `coord` is out of bounds
+    #[must_use]
+    pub fn get(&self, coord: impl Into<Coord>) -> Option<&T> {
+        let index = coord.into().into_index(self.width)?;
+        self.cells.get(index)
+    }
+}
