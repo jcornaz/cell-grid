@@ -40,6 +40,30 @@ impl From<[i32; 2]> for Coord {
     }
 }
 
+impl From<[f32; 2]> for Coord {
+    #[allow(clippy::cast_possible_truncation)]
+    fn from([x, y]: [f32; 2]) -> Self {
+        Self {
+            x: x as i32,
+            y: y as i32,
+        }
+    }
+}
+
+#[cfg(feature = "aline-v01")]
+impl From<aline_v01::IVec2> for Coord {
+    fn from(aline_v01::IVec2 { x, y }: aline_v01::IVec2) -> Self {
+        Self { x, y }
+    }
+}
+
+#[cfg(feature = "aline-v01")]
+impl From<aline_v01::Vec2> for Coord {
+    fn from(v: aline_v01::Vec2) -> Self {
+        v.as_i32().into()
+    }
+}
+
 #[cfg(test)]
 mod tests {
 
