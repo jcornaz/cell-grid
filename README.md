@@ -5,7 +5,7 @@
 [![Crates.io](https://img.shields.io/crates/v/cell-grid)](https://crates.io/crates/cell-grid)
 [![Docs](https://docs.rs/cell-grid/badge.svg)](https://docs.rs/cell-grid)
 
-A simple fixed-size cellular grid container suitable for `no_std` game development 
+A simple fixed-size 2d grid container suitable for `no_std` game development 
 
 
 ## Maintenance status

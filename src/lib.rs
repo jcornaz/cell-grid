@@ -1,7 +1,7 @@
 #![cfg_attr(docsrs, feature(doc_auto_cfg))]
 #![cfg_attr(not(feature = "std"), no_std)]
 
-//! A simple fixed-size cellular grid container suitable for `no_std` game development
+//! A simple fixed-size 2d grid container suitable for `no_std` game development
 //!
 //! ## Features
 //!
@@ -11,10 +11,12 @@
 extern crate alloc;
 
 mod coord;
+mod rect;
 
 use alloc::vec::Vec;
 
 pub use coord::Coord;
+pub use rect::Rect;
 
 /// A 2d fixed-size grid containers for cells of type `T`
 #[derive(Debug, Clone, Eq, PartialEq)]
@@ -49,5 +51,10 @@ impl<T> Grid<T> {
     pub fn get(&self, coord: impl Into<Coord>) -> Option<&T> {
         let index = coord.into().into_index(self.width)?;
         self.cells.get(index)
+    }
+
+    /// Iterator over cells in `rect`
+    pub fn cells_in_rect(&self, rect: impl Into<Rect>) -> impl Iterator<Item = &T> {
+        rect.into().coords().filter_map(|c| self.get(c))
     }
 }
