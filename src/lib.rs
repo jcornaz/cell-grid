@@ -9,7 +9,11 @@
 
 extern crate alloc;
 
+mod coord;
+
 use alloc::vec::Vec;
+
+pub use coord::Coord;
 
 /// A 2d fixed-size grid containers for cells of type `T`
 #[derive(Debug, Clone, Eq, PartialEq)]
