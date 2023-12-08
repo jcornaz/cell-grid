@@ -3,13 +3,13 @@
 
 //! A simple fixed-size 2d grid container suitable for `no_std` game development
 //!
-//! See [`Grid::new`] [`Grid::new_with`] and [`Grid::from_row_major_iter`] for examples on
+//! See [`Grid::new`], [`Grid::new_with`] and [`Grid::from_row_major_iter`] for examples on
 //! how to create a grid.
 //!
 //! ## Features
 //!
-//! `std`: *(enabled by default)* enable use of the standard library. Must be disabled for `no_std` crates.
-//! `aline-v01`: add conversions between [`Coord`] and [aline 0.1](https://docs.rs/aline/0.1) vectors
+//! * `std`: *(enabled by default)* enable use of the standard library. Must be disabled for `no_std` crates.
+//! * `aline-v01`: add conversions between [`Coord`] and [aline 0.1](https://docs.rs/aline/0.1) vectors
 
 extern crate alloc;
 

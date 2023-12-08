@@ -11,7 +11,7 @@ impl Rect {
     /// Create rectangle from the `min` and `max` coordinates
     ///
     /// In a typical screen-space system (x = right, y = down)
-    /// then `min` is the top-left, and `max` is the bottom right
+    /// `min` is the top-left, and `max` is the bottom right
     pub fn from_min_max(min: impl Into<Coord>, max: impl Into<Coord>) -> Self {
         Self {
             min: min.into(),
