@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 * `Grid` struct
-  * Create a new grid either with default values for cells, or using an `init` function for each cell
+  * Create a new grid either with default values for cells, an iterator of cells, or using an `init` function for each cell
   * Access a cell by coordinate
   * Iterate over cells that are in a given rectangle
 * `Coord` struct

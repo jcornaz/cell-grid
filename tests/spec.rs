@@ -23,6 +23,15 @@ fn can_crate_grid_with_cell_init_function() {
 }
 
 #[test]
+fn can_create_from_row_major_iter() {
+    let grid = Grid::from_row_major_iter(2, [1, 2, 3, 4]);
+    assert_eq!(grid.get([0, 0]), Some(&1));
+    assert_eq!(grid.get([1, 0]), Some(&2));
+    assert_eq!(grid.get([0, 1]), Some(&3));
+    assert_eq!(grid.get([1, 1]), Some(&4));
+}
+
+#[test]
 fn can_iterate_cells_overlaping_a_rectangle() {
     let grid = Grid::new_with(10, 42, |coord| coord);
     let cells: HashSet<Coord> = grid
