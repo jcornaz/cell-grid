@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+
+## [0.1.1] - 2023-12-09
+
 ### Added 
 
 * `Rect::coords` iterator
@@ -28,5 +31,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * `no_std` support (by disabling the `std` feature)
 * `aline-v01` feature for compatiblity with the [`aline`](https://github.com/jcornaz/aline) crate
 
-[Unreleased]: https://github.com/jcornaz/cell-grid/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/jcornaz/cell-grid/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/jcornaz/cell-grid/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/jcornaz/cell-grid/compare/...v0.1.0
