@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 * `Rect::coords` iterator
 * `Grid::cells` iterator
+* `Grid::get_mut` and `Grid::set` method to mutate the content
 
 ### Documentation
 

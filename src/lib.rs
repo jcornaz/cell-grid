@@ -97,6 +97,26 @@ impl<T> Grid<T> {
         self.cells.get(index)
     }
 
+    /// Access mutably the cell at `coord`
+    ///
+    /// Returns `None` if the `coord` is out of bounds
+    pub fn get_mut(&mut self, coord: impl Into<Coord>) -> Option<&mut T> {
+        let index = coord.into().into_index(self.width)?;
+        self.cells.get_mut(index)
+    }
+
+    /// Set the value of the cell at `coord`
+    ///
+    /// # Panics
+    ///
+    /// Panics if the `coord` is out-of-bounds
+    ///
+    /// For a non-panicking version, use `get_mut`
+    pub fn set(&mut self, coord: impl Into<Coord>, value: T) {
+        let cell = self.get_mut(coord).expect("coordinate is out-of-bounds");
+        *cell = value;
+    }
+
     /// Iterator over all cells
     pub fn cells(&self) -> impl Iterator<Item = &T> {
         self.cells.iter()

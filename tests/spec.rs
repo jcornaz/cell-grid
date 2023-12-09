@@ -32,6 +32,22 @@ fn can_create_from_row_major_iter() {
 }
 
 #[test]
+fn can_mutate_cell() {
+    let mut grid = Grid::new(2, 1);
+    grid.set([0, 0], 1);
+    assert_eq!(grid.get([0, 0]), Some(&1));
+    *grid.get_mut([1, 0]).unwrap() = 2;
+    assert_eq!(grid.get([1, 0]), Some(&2));
+}
+
+#[test]
+#[should_panic(expected = "coordinate is out-of-bounds")]
+fn set_cell_panic_if_out_of_bounds() {
+    let mut grid = Grid::new(1, 1);
+    grid.set([0, 1], 1);
+}
+
+#[test]
 fn can_iterate_cells() {
     let grid = Grid::from_row_major_iter(2, [1, 2, 3, 4]);
     let cells: HashSet<i32> = grid.cells().copied().collect();
