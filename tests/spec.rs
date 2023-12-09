@@ -32,6 +32,14 @@ fn can_create_from_row_major_iter() {
 }
 
 #[test]
+fn can_iterate_cells() {
+    let grid = Grid::from_row_major_iter(2, [1, 2, 3, 4]);
+    let cells: HashSet<i32> = grid.cells().copied().collect();
+    let expected: HashSet<i32> = (1..=4).collect();
+    assert_eq!(cells, expected);
+}
+
+#[test]
 fn can_iterate_cells_overlaping_a_rectangle() {
     let grid = Grid::new_with(10, 42, |coord| coord);
     let cells: HashSet<Coord> = grid

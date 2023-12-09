@@ -97,6 +97,11 @@ impl<T> Grid<T> {
         self.cells.get(index)
     }
 
+    /// Iterator over all cells
+    pub fn cells(&self) -> impl Iterator<Item = &T> {
+        self.cells.iter()
+    }
+
     /// Iterator over cells in `rect`
     pub fn cells_in_rect(&self, rect: impl Into<Rect>) -> impl Iterator<Item = &T> {
         rect.into().coords().filter_map(|c| self.get(c))
