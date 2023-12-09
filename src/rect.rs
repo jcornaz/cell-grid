@@ -19,7 +19,8 @@ impl Rect {
         }
     }
 
-    pub(crate) fn coords(self) -> impl Iterator<Item = Coord> {
+    /// Returns an iterator over the coordinates contained in the rectangle
+    pub fn coords(self) -> impl Iterator<Item = Coord> {
         (self.min.x..=self.max.x)
             .flat_map(move |x| (self.min.y..=self.max.y).map(move |y| Coord::new(x, y)))
     }

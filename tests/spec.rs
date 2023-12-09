@@ -44,3 +44,13 @@ fn can_iterate_cells_overlaping_a_rectangle() {
         .collect();
     assert_eq!(cells, expected_cells);
 }
+
+#[test]
+fn can_get_coords_from_rect() {
+    let rect: HashSet<Coord> = Rect::from_min_max([0, 0], [1, 1]).coords().collect();
+    let expected: HashSet<Coord> = [[0, 0], [0, 1], [1, 0], [1, 1]]
+        .into_iter()
+        .map(Coord::from)
+        .collect();
+    assert_eq!(rect, expected);
+}
