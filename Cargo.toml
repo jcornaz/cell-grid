@@ -13,9 +13,6 @@ keywords = ["2d", "grid", "data-structure", "matrix", "no_std"]
 [badges.maintenance]
 status = "actively-developed"
 
-[badges.maintenance]
-status = "actively-developed"
-
 [package.metadata.docs.rs]
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
