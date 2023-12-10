@@ -10,6 +10,9 @@ description = "A simple fixed-size 2d grid container suitable for `no_std` game 
 categories = ["data-structures"]
 keywords = ["2d", "grid", "data-structure", "matrix", "no_std"]
 
+[badges.maintenance]
+status = "actively-developed"
+
 [package.metadata.docs.rs]
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
