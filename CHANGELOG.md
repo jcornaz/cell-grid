@@ -7,6 +7,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added 
+
+* `aline` feature for compatiblity with the [`aline`](https://github.com/jcornaz/aline) crate (version `1.x.x`)
+  It effectively replaces the `aline-v01` feature flag
+
 
 ## [0.1.1] - 2023-12-09
 

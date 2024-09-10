@@ -9,7 +9,7 @@
 //! ## Features
 //!
 //! * `std`: *(enabled by default)* enable use of the standard library. Must be disabled for `no_std` crates.
-//! * `aline-v01`: add conversions between [`Coord`] and [aline 0.1](https://docs.rs/aline/0.1) vectors
+//! * `aline`: add conversions between [`Coord`] and [aline](https://docs.rs/aline/1) vectors
 
 extern crate alloc;
 

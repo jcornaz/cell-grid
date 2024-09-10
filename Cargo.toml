@@ -20,10 +20,11 @@ rustdoc-args = ["--cfg", "docsrs"]
 [features]
 default = ["std"]
 std = []
-aline-v01 = ["dep:aline-v01"]
+aline = ["dep:aline"]
+aline-v01 = ["aline"]
 
 [dependencies]
-aline-v01 = { package = "aline", version = "0.1.3", default-features = false, optional = true }
+aline = { package = "aline", version = "1.0", default-features = false, optional = true }
 
 [dev-dependencies]
 rstest = { version = "0.21.0", default-features = false }
