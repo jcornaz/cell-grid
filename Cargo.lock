@@ -19,7 +19,7 @@ checksum = "aacb93038371b4f4cbfc0237232a21a3460663a504f122754e0080ed0c66ad7b"
 
 [[package]]
 name = "cell-grid"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "aline",
  "rstest",

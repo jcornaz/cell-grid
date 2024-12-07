@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+
+## [0.1.2] - 2024-12-07
+
 ### Added 
 
 * `aline` feature for compatiblity with the [`aline`](https://github.com/jcornaz/aline) crate (version `1.x.x`)
@@ -40,6 +43,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 * `no_std` support (by disabling the `std` feature)
 * `aline-v01` feature for compatiblity with the [`aline`](https://github.com/jcornaz/aline) crate
 
-[Unreleased]: https://github.com/jcornaz/cell-grid/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/jcornaz/cell-grid/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/jcornaz/cell-grid/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/jcornaz/cell-grid/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/jcornaz/cell-grid/compare/...v0.1.0
