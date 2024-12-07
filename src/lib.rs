@@ -14,6 +14,7 @@
 extern crate alloc;
 
 mod coord;
+pub mod dynamic;
 mod rect;
 
 use alloc::vec::Vec;

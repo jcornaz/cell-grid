@@ -7,6 +7,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+* `dynamic` module with `Grid` struct that can grow after creation
+
 
 ## [0.1.2] - 2024-12-07
 
