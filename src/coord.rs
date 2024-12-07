@@ -1,6 +1,9 @@
+#![allow(deprecated)]
+
 /// A coordinate of a grid
 #[allow(missing_docs, clippy::exhaustive_structs)]
 #[derive(Debug, Clone, Copy, Default, Eq, PartialEq, Hash)]
+#[deprecated(since = "0.2.0", note = "this is no longer used by the `Grid` API")]
 pub struct Coord {
     pub x: i32,
     pub y: i32,
@@ -14,6 +17,7 @@ impl Coord {
     }
 
     #[must_use]
+    #[cfg(test)]
     pub(crate) fn from_index(grid_width: usize, index: usize) -> Self {
         Self {
             x: (index % grid_width).try_into().unwrap(),
@@ -22,6 +26,7 @@ impl Coord {
     }
 
     #[must_use]
+    #[cfg(test)]
     pub(crate) fn into_index(self, grid_width: usize) -> Option<usize> {
         let x: usize = self.x.try_into().ok()?;
         let y: usize = self.y.try_into().ok()?;

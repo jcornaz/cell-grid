@@ -1,7 +1,9 @@
+#![allow(deprecated)]
 use crate::Coord;
 
 /// A rectangle of coordinates
 #[derive(Debug, Copy, Clone, Eq, PartialEq)]
+#[deprecated(since = "0.2.0", note = "this is no longer used by the `Grid` API")]
 pub struct Rect {
     min: Coord,
     max: Coord,
