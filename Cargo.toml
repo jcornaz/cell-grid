@@ -4,7 +4,7 @@ version = "0.1.1"
 license = "Unlicense"
 authors = ["Jonathan Cornaz"]
 edition = "2021"
-rust-version = "1.74"
+rust-version = "1.60"
 repository = "https://github.com/jcornaz/cell-grid"
 description = "A simple fixed-size 2d grid container suitable for `no_std` game development"
 categories = ["data-structures"]
@@ -24,10 +24,10 @@ aline = ["dep:aline"]
 aline-v01 = ["aline"]
 
 [dependencies]
-aline = { package = "aline", version = "1.0", default-features = false, optional = true }
+aline = { package = "aline", version = "1", default-features = false, optional = true }
 
 [dev-dependencies]
-rstest = { version = "0.21.0", default-features = false }
+rstest = { version = "0.23", default-features = false }
 
 [lints.rust]
 unsafe_code = "deny"

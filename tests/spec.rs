@@ -1,3 +1,5 @@
+#![allow(missing_docs)]
+
 use std::collections::HashSet;
 
 use cell_grid::{Coord, Grid, Rect};
