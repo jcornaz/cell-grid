@@ -23,7 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Deprecation
 
-* Deprecated `Grid` in favor of `DynamicGrid`
+* Deprecated `Grid`, `Coord` and `Rect` in favor of `DynamicGrid`
 * The module `dynamic` is deprecated and hidden from documentation (its content is now in the crate root)
 
 

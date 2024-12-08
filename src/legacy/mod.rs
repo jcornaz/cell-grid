@@ -1,3 +1,5 @@
+#![allow(deprecated)]
+
 mod coord;
 mod rect;
 
@@ -7,6 +9,7 @@ pub use coord::Coord;
 pub use rect::Rect;
 
 /// A 2d fixed-size grid containers for cells of type `T`
+#[deprecated(since = "0.1.4", note = "Use `DynamicGrid` instead")]
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct Grid<T> {
     cells: Vec<T>,

@@ -34,6 +34,7 @@ extern crate alloc;
 pub mod dynamic;
 mod legacy;
 
+#[allow(deprecated)]
 pub use legacy::{Coord, Grid, Rect};
 
 use core::{fmt::Display, mem};

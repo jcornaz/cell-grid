@@ -1,4 +1,4 @@
-#![allow(missing_docs)]
+#![allow(missing_docs, deprecated)]
 
 use std::collections::HashSet;
 

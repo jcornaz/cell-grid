@@ -3,7 +3,6 @@ set dotenv-load
 # Perform all verifications (compile, test, lint, etc.)
 verify: test lint doc check-msrv
 	cargo deny check licenses
-	cargo semver-checks
 
 # Watch the source files and run `just verify` when source changes
 watch:

@@ -1,6 +1,7 @@
 /// A coordinate of a grid
 #[allow(missing_docs, clippy::exhaustive_structs)]
 #[derive(Debug, Clone, Copy, Default, Eq, PartialEq, Hash)]
+#[deprecated(since = "0.1.4", note = "Use `DynamicGrid` instead")]
 pub struct Coord {
     pub x: i32,
     pub y: i32,

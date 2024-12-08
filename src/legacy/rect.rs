@@ -2,6 +2,7 @@ use crate::Coord;
 
 /// A rectangle of coordinates
 #[derive(Debug, Copy, Clone, Eq, PartialEq)]
+#[deprecated(since = "0.1.4", note = "Use `DynamicGrid` instead")]
 pub struct Rect {
     min: Coord,
     max: Coord,
