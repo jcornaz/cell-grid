@@ -96,7 +96,6 @@ impl<T> Grid<T> {
     /// Set the new value to the cell at col `x` and row `y` and return the old value.
     ///
     /// Returns `None` if `x` and `y` are out of bounds
-    #[must_use]
     pub fn set(&mut self, x: usize, y: usize, mut new_value: T) -> Option<T> {
         let cell = self.get_mut(x, y)?;
         mem::swap(cell, &mut new_value);
