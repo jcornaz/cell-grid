@@ -114,3 +114,20 @@ fn out_of_bounds_are_ignored_when_iterating_overlaping_rect() {
     let cells: Vec<&(usize, usize)> = grid.cells_in_rect(9, 9, 5, 5).collect();
     assert_eq!(cells, [&(9, 9)]);
 }
+
+#[test]
+fn grid_should_be_thread_safe() {
+    assert_thread_safe::<Grid<i32>>();
+}
+
+#[test]
+fn errors_should_be_thread_safe() {
+    assert_thread_safe::<IncompatibleRowSize>();
+}
+
+/// Statically ensure a types implement all basic traits
+fn assert_thread_safe<T>()
+where
+    T: Send + Sync + 'static,
+{
+}
