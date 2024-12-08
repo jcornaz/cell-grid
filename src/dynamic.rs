@@ -5,6 +5,22 @@ use core::{fmt::Display, mem};
 use alloc::vec::Vec;
 
 /// A row-major 2d grid
+///
+/// # Example
+///
+/// ```
+/// # use cell_grid::dynamic::Grid;
+/// let mut grid: Grid<i32> = Grid::new();
+/// assert!(grid.is_empty());
+///
+/// grid.push_row([1, 2]).unwrap();
+/// grid.push_row([3, 4]).unwrap();
+///
+/// assert_eq!(grid.get(0, 0), Some(&1));
+/// assert_eq!(grid.get(1, 0), Some(&2));
+/// assert_eq!(grid.get(0, 1), Some(&3));
+/// assert_eq!(grid.get(1, 1), Some(&4));
+/// ```
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct Grid<T> {
     cells: Vec<T>,
