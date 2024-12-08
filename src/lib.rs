@@ -1,23 +1,35 @@
 #![cfg_attr(docsrs, feature(doc_auto_cfg))]
 #![cfg_attr(not(feature = "std"), no_std)]
 
-//! A simple fixed-size 2d grid container suitable for `no_std` game development
+//! A simple 2d grid container
 //!
 //! # Example
 //!
 //! ```
-//! # use cell_grid::dynamic::Grid;
-//! let mut grid: Grid<i32> = Grid::new();
-//! assert!(grid.is_empty());
+//! use cell_grid::DynamicGrid;
 //!
+//! // Create a new empty grid
+//! let mut grid: DynamicGrid<i32> = DynamicGrid::new();
+//!
+//! // Push rows
 //! grid.push_row([1, 2]).unwrap();
 //! grid.push_row([3, 4]).unwrap();
 //!
+//! // Access by coordinate
 //! assert_eq!(grid.get(0, 0), Some(&1));
 //! assert_eq!(grid.get(1, 0), Some(&2));
 //! assert_eq!(grid.get(0, 1), Some(&3));
 //! assert_eq!(grid.get(1, 1), Some(&4));
+//!
+//! // Iterate the content
+//! assert_eq!(grid.cells().copied().collect::<Vec<_>>(), vec![1, 2, 3, 4]);
+//! assert_eq!(grid.rows().collect::<Vec<_>>(), vec![&[1, 2], &[3, 4]]);
 //! ```
+//!
+//! It is also possible to:
+//!
+//! * Create a grid from size an init function: [`DynamicGrid::new_with`]
+//! * Iterate the cells which overlap a rectangle: [`DynamicGrid::cells_in_rect`]
 //!
 //! ## Features
 //!
@@ -114,8 +126,8 @@ impl<T> DynamicGrid<T> {
     /// # Example
     ///
     /// ```
-    /// # use cell_grid::dynamic::Grid;
-    /// let grid = Grid::new_from_iter(2, [1, 2, 3, 4]).unwrap();
+    /// # use cell_grid::DynamicGrid;
+    /// let grid = DynamicGrid::new_from_iter(2, [1, 2, 3, 4]).unwrap();
     /// assert_eq!(grid.get(0, 0), Some(&1));
     /// assert_eq!(grid.get(1, 0), Some(&2));
     /// assert_eq!(grid.get(0, 1), Some(&3));
@@ -214,8 +226,8 @@ impl<T> DynamicGrid<T> {
     /// # Example
     ///
     /// ```
-    /// # use cell_grid::dynamic::Grid;
-    /// let grid = Grid::new_with(5, 5, |x, y| (x, y));
+    /// # use cell_grid::DynamicGrid;
+    /// let grid = DynamicGrid::new_with(5, 5, |x, y| (x, y));
     /// let in_rect: Vec<_> = grid.cells_in_rect(2, 2, 2, 2).copied().collect();
     /// assert_eq!(in_rect, &[(2, 2), (3, 2), (2, 3), (3, 3)]);
     /// ```

@@ -5,16 +5,33 @@
 [![Crates.io](https://img.shields.io/crates/v/cell-grid)](https://crates.io/crates/cell-grid)
 [![Docs](https://docs.rs/cell-grid/badge.svg)](https://docs.rs/cell-grid)
 
-A simple fixed-size 2d grid container suitable for `no_std` game development 
+A simple 2d grid container
+
+```rust
+use cell_grid::DynamicGrid;
+
+// Create a new empty grid
+let mut grid: DynamicGrid<i32> = DynamicGrid::new();
+
+// Push rows
+grid.push_row([1, 2]).unwrap();
+grid.push_row([3, 4]).unwrap();
+
+// Access by coordinate
+assert_eq!(grid.get(0, 0), Some(&1));
+assert_eq!(grid.get(1, 0), Some(&2));
+assert_eq!(grid.get(0, 1), Some(&3));
+assert_eq!(grid.get(1, 1), Some(&4));
+
+// Iterate the content
+assert_eq!(grid.cells().copied().collect::<Vec<_>>(), vec![1, 2, 3, 4]);
+assert_eq!(grid.rows().collect::<Vec<_>>(), vec![&[1, 2], &[3, 4]]);
+```
 
 
-## Maintenance status
+## Feature flags
 
-I made this project for my personal use. I'll be happy if it can be useful to anyone else, but there are a few things to keep in mind:
-* I only write documentation for my "future self", which may not be enough for people who are not in my head.
-* The project may never be "feature complete" as I only add new features when I need them.
-
-That being said, I also welcome suggestions and contributions.
+* `std`: enabled by default. must be disabled to compile to `no_std`
 
 
 ## MSRV

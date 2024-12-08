@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 * Rename `dynamic::Grid` to `DynamicGrid` (the former remains as an alias)
 * `DynamicGrid::new_from_iter`
-* `DynamicGrid::width` and `dynamic::Grid::height`
+* `DynamicGrid::width` and `DynamicGrid::height`
 * `DynamicGrid::cells_in_rect` iterator
 
 
@@ -35,7 +35,7 @@ This release adds a `dynamic` module with a new `Grid` struct.
 
 This is essentially a second attempt at designing the `Grid` API, with two main differences:
 
-* The grid size can change after creation and `push_row` is the primary way to build a `dynamic::Grid`.
+* The grid size can change after creation and `push_row` is the primary way to build a `DynamicGrid`.
   I think this will improve the ergonomics of the API.
 * The grid API doesn't depend on `Coord` and `Rect`, but take multiple integer arguments instead.
   This nullify the needs to add conversion from every possible vector type to `Coord`.
