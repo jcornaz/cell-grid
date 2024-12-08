@@ -28,7 +28,7 @@
 //!
 //! It is also possible to:
 //!
-//! * Create a grid from size an init function: [`DynamicGrid::new_with`]
+//! * Create a grid from size and init function: [`DynamicGrid::new_with`]
 //! * Iterate the cells which overlap a rectangle: [`DynamicGrid::cells_in_rect`]
 //!
 //! ## Features
