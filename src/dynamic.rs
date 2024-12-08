@@ -126,3 +126,6 @@ impl Display for IncompatibleRowSize {
         )
     }
 }
+
+#[rustversion::since(1.81)]
+impl core::error::Error for IncompatibleRowSize {}

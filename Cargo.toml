@@ -25,6 +25,7 @@ aline-v01 = ["aline"]
 
 [dependencies]
 aline = { package = "aline", version = "1", default-features = false, optional = true }
+rustversion = "1"
 
 [dev-dependencies]
 rstest = { version = "0.23", default-features = false }
