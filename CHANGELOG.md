@@ -10,9 +10,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-* `dynamic::Grid::new_from_iter`
-* `dynamic::Grid::width` and `dynamic::Grid::height`
-* `dynamic::Grid::cells_in_rect` iterator
+* Rename `dynamic::Grid` to `DynamicGrid` (the former remains as an alias)
+* `DynamicGrid::new_from_iter`
+* `DynamicGrid::width` and `dynamic::Grid::height`
+* `DynamicGrid::cells_in_rect` iterator
+
+
+### Documentation
+
+* Change crate root documentation to point to `DynamicGrid` instead of `Grid`
+
+
+### Deprecation
+
+* Deprecated `Grid` in favor of `DynamicGrid`
+* The module `dynamic` is deprecated and hidden from documentation (its content is now in the crate root)
 
 
 ## [0.1.3] - 2024-12-08
