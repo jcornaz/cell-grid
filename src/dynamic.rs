@@ -40,6 +40,17 @@ impl<T> Grid<T> {
         }
     }
 
+    /// Create a new empty grid with pre-allocated `capacity` cells
+    ///
+    /// Use [`Self::push_row`] to add content
+    #[must_use]
+    pub fn new_with_capacity(capacity: usize) -> Self {
+        Self {
+            cells: Vec::with_capacity(capacity),
+            width: 0,
+        }
+    }
+
     /// Create a new grid of the given size, with each cells being initialized with the given function
     #[must_use]
     pub fn new_with(width: usize, height: usize, mut init: impl FnMut(usize, usize) -> T) -> Self {
