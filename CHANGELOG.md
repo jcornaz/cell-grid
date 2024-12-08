@@ -9,7 +9,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-* `dynamic` module with `Grid` struct that can grow after creation
+This release adds a `dynamic` module with a new `Grid` struct.
+
+This is essentially a second attempt at designing the `Grid` API, with two main differences:
+
+* The grid size can change after creation and `push_row` is the primary way to build a `dynamic::Grid`.
+  I think this will improve the ergonomics of the API.
+* The grid API doesn't depend on `Coord` and `Rect`, but take multiple integer arguments instead.
+  This nullify the needs to add conversion from every possible vector type to `Coord`.
+  And I think it might even make the API more ergonomics and simpler to understand.
 
 
 ## [0.1.2] - 2024-12-07
