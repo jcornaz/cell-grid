@@ -103,6 +103,26 @@ impl<T> Grid<T> {
         Some(new_value)
     }
 
+    /// Returns an iterator over the cells
+    #[must_use]
+    pub fn cells(&self) -> impl DoubleEndedIterator<Item = &T> {
+        self.cells.iter()
+    }
+
+    /// Returns a mutable iterator over the cells
+    #[must_use]
+    pub fn cells_mut(&mut self) -> impl DoubleEndedIterator<Item = &mut T> {
+        self.cells.iter_mut()
+    }
+
+    /// Returns an iterator over the rows
+    #[must_use]
+    pub fn rows(&self) -> impl DoubleEndedIterator<Item = &[T]> {
+        (0..self.cells.len())
+            .step_by(self.width)
+            .map(|i| &self.cells[i..(i + self.width)])
+    }
+
     fn index(&self, x: usize, y: usize) -> usize {
         y * self.width + x
     }

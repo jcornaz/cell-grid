@@ -1,5 +1,7 @@
 #![allow(missing_docs)]
 
+use core::mem;
+
 use cell_grid::dynamic::{Grid, IncompatibleRowSize};
 
 #[test]
@@ -40,4 +42,27 @@ fn can_mutate_cell() {
     assert_eq!(grid.get(1, 0), Some(&2));
     assert_eq!(grid.set(1, 0, 3), Some(2));
     assert_eq!(grid.get(1, 0), Some(&3));
+}
+
+#[test]
+fn can_iterate_cells() {
+    let grid = Grid::new_with(2, 2, |x, y| (x, y));
+    let rows: Vec<&(usize, usize)> = grid.cells().collect();
+    assert_eq!(rows, [&(0, 0), &(1, 0), &(0, 1), &(1, 1)]);
+}
+
+#[test]
+fn can_iterate_cell_mutably() {
+    let mut grid = Grid::new_with(3, 3, |x, y| (x, y));
+    for (x, y) in grid.cells_mut() {
+        mem::swap(x, y);
+    }
+    assert_eq!(grid.get(1, 2), Some(&(2, 1)));
+}
+
+#[test]
+fn can_iterate_rows() {
+    let grid = Grid::new_with(2, 2, |x, y| (x, y));
+    let rows: Vec<&[(usize, usize)]> = grid.rows().collect();
+    assert_eq!(rows, [&[(0, 0), (1, 0)], &[(0, 1), (1, 1)],]);
 }
