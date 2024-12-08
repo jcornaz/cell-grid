@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 * `dynamic::Grid::new_from_iter`
+* `dynamic::Grid::width` and `dynamic::Grid::height`
+* `dynamic::Grid::cells_in_rect` iterator
 
 
 ## [0.1.3] - 2024-12-08

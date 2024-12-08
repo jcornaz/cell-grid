@@ -29,6 +29,12 @@ fn can_create_from_size_and_init_function() {
 }
 
 #[test]
+fn get_return_null_when_x_is_out_of_bounds() {
+    let grid = Grid::new_with(5, 5, |x, y| (x, y));
+    assert_eq!(grid.get(5, 0), None);
+}
+
+#[test]
 fn can_create_from_size_and_default() {
     let grid = Grid::<bool>::new_with_default(5, 5);
     assert_eq!(grid.get(2, 3), Some(&false));
@@ -90,4 +96,21 @@ fn can_iterate_rows() {
     let grid = Grid::new_with(2, 2, |x, y| (x, y));
     let rows: Vec<&[(usize, usize)]> = grid.rows().collect();
     assert_eq!(rows, [&[(0, 0), (1, 0)], &[(0, 1), (1, 1)],]);
+}
+
+#[test]
+fn can_iterate_cells_overlaping_a_rectangle() {
+    let grid = Grid::new_with(10, 10, |x, y| (x, y));
+    let cells: Vec<&(usize, usize)> = grid.cells_in_rect(4, 5, 2, 3).collect();
+    assert_eq!(
+        cells,
+        [&(4, 5), &(5, 5), &(4, 6), &(5, 6), &(4, 7), &(5, 7)]
+    );
+}
+
+#[test]
+fn out_of_bounds_are_ignored_when_iterating_overlaping_rect() {
+    let grid = Grid::new_with(10, 10, |x, y| (x, y));
+    let cells: Vec<&(usize, usize)> = grid.cells_in_rect(9, 9, 5, 5).collect();
+    assert_eq!(cells, [&(9, 9)]);
 }

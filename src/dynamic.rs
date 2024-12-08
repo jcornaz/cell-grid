@@ -140,12 +140,24 @@ impl<T> Grid<T> {
         self.cells.is_empty()
     }
 
+    /// Returns the width of the grid
+    #[must_use]
+    pub fn width(&self) -> usize {
+        self.width
+    }
+
+    /// Returns the height of the grid
+    #[must_use]
+    pub fn height(&self) -> usize {
+        self.cells.len() / self.width
+    }
+
     /// Get a reference to the cell at col `x` and row `y`
     ///
     /// Returns `None` if `x` and `y` are out of bounds
     #[must_use]
     pub fn get(&self, x: usize, y: usize) -> Option<&T> {
-        self.cells.get(self.index(x, y))
+        self.index(x, y).and_then(|i| self.cells.get(i))
     }
 
     /// Get a mutable reference to the cell at col `x` and row `y`
@@ -153,8 +165,7 @@ impl<T> Grid<T> {
     /// Returns `None` if `x` and `y` are out of bounds
     #[must_use]
     pub fn get_mut(&mut self, x: usize, y: usize) -> Option<&mut T> {
-        let index = self.index(x, y);
-        self.cells.get_mut(index)
+        self.index(x, y).and_then(|i| self.cells.get_mut(i))
     }
 
     /// Set the new value to the cell at col `x` and row `y` and return the old value.
@@ -178,6 +189,35 @@ impl<T> Grid<T> {
         self.cells.iter_mut()
     }
 
+    /// Returns an iterator over the cells in the rectangle that start at col `x`, row `y` and of size given by `width` and `height`
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// # use cell_grid::dynamic::Grid;
+    /// let grid = Grid::new_with(5, 5, |x, y| (x, y));
+    /// let in_rect: Vec<_> = grid.cells_in_rect(2, 2, 2, 2).copied().collect();
+    /// assert_eq!(in_rect, &[(2, 2), (3, 2), (2, 3), (3, 3)]);
+    /// ```
+    #[must_use]
+    pub fn cells_in_rect(
+        &self,
+        x: usize,
+        y: usize,
+        width: usize,
+        height: usize,
+    ) -> impl DoubleEndedIterator<Item = &T> {
+        let width = width.min(self.width - x);
+        let grid_height = self.height();
+        (y..(y + height))
+            .filter(move |y| *y < grid_height)
+            .filter_map(move |y| {
+                let from = self.index(x, y)?;
+                Some(&self.cells[from..(from + width)])
+            })
+            .flatten()
+    }
+
     /// Returns an iterator over the rows
     #[must_use]
     pub fn rows(&self) -> impl DoubleEndedIterator<Item = &[T]> {
@@ -186,8 +226,12 @@ impl<T> Grid<T> {
             .map(|i| &self.cells[i..(i + self.width)])
     }
 
-    fn index(&self, x: usize, y: usize) -> usize {
-        y * self.width + x
+    fn index(&self, x: usize, y: usize) -> Option<usize> {
+        if x >= self.width {
+            None
+        } else {
+            Some(y * self.width + x)
+        }
     }
 
     fn index_to_coord(index: usize, width: usize) -> (usize, usize) {
