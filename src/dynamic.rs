@@ -211,11 +211,8 @@ impl<T> Grid<T> {
         let grid_height = self.height();
         (y..(y + height))
             .filter(move |y| *y < grid_height)
-            .filter_map(move |y| {
-                let from = self.index(x, y)?;
-                Some(&self.cells[from..(from + width)])
-            })
-            .flatten()
+            .filter_map(move |y| self.index(x, y))
+            .flat_map(move |from| &self.cells[from..(from + width)])
     }
 
     /// Returns an iterator over the rows
