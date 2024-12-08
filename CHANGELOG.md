@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 
+### Added
+
+* `dynamic::Grid::new_from_iter`
+
+
 ## [0.1.3] - 2024-12-08
 
 ### Added

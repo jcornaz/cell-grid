@@ -65,6 +65,37 @@ impl<T> Grid<T> {
         }
     }
 
+    /// Create a new grid of the given width and row-major iterator
+    ///
+    ///
+    /// The given iterator must emits cells by row first, then by column
+    ///
+    /// # Errors
+    ///
+    /// Returns [`IncompatibleRowSize`] if the number of elements yielded by the iterator is not compaible
+    /// with the given `width`
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// # use cell_grid::dynamic::Grid;
+    /// let grid = Grid::new_from_iter(2, [1, 2, 3, 4]).unwrap();
+    /// assert_eq!(grid.get(0, 0), Some(&1));
+    /// assert_eq!(grid.get(1, 0), Some(&2));
+    /// assert_eq!(grid.get(0, 1), Some(&3));
+    /// assert_eq!(grid.get(1, 1), Some(&4));
+    /// ```
+    pub fn new_from_iter(
+        width: usize,
+        iter: impl IntoIterator<Item = T>,
+    ) -> Result<Self, IncompatibleRowSize> {
+        let cells: Vec<T> = iter.into_iter().collect();
+        if !cells.is_empty() && (width == 0 || cells.len() % width != 0) {
+            return Err(IncompatibleRowSize);
+        };
+        Ok(Self { cells, width })
+    }
+
     /// Push a row to the grid
     ///
     /// If the grid is not empty, the row length should match the current width of the grid.
@@ -85,6 +116,12 @@ impl<T> Grid<T> {
             return Err(IncompatibleRowSize);
         }
         Ok(())
+    }
+
+    /// Returns `true` if the grid is empty
+    #[must_use]
+    pub fn is_empty(&self) -> bool {
+        self.cells.is_empty()
     }
 
     /// Get a reference to the cell at col `x` and row `y`
