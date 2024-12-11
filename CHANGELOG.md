@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+
+## [0.1.5] - 2024-12-11
+
 ### Added
 
 * `cells_with_coords` and `cells_with_coords_mut` iterator
@@ -84,7 +87,8 @@ This is essentially a second attempt at designing the `Grid` API, with two main 
 * `no_std` support (by disabling the `std` feature)
 * `aline-v01` feature for compatiblity with the [`aline`](https://github.com/jcornaz/aline) crate
 
-[Unreleased]: https://github.com/jcornaz/cell-grid/compare/v0.1.4...HEAD
+[Unreleased]: https://github.com/jcornaz/cell-grid/compare/v0.1.5...HEAD
+[0.1.5]: https://github.com/jcornaz/cell-grid/compare/v0.1.4...v0.1.5
 [0.1.4]: https://github.com/jcornaz/cell-grid/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/jcornaz/cell-grid/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/jcornaz/cell-grid/compare/v0.1.1...v0.1.2
