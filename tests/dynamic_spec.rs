@@ -116,6 +116,31 @@ fn out_of_bounds_are_ignored_when_iterating_overlaping_rect() {
 }
 
 #[test]
+fn can_iterate_cells_with_coords() {
+    let grid = DynamicGrid::<u8>::new_from_iter(2, 0..4).unwrap();
+    let values: Vec<((usize, usize), &u8)> = grid.cells_with_coords().collect();
+    assert_eq!(
+        &values,
+        &[((0, 0), &0), ((1, 0), &1), ((0, 1), &2), ((1, 1), &3),]
+    );
+}
+
+#[test]
+fn can_iterate_cells_with_coords_mutably() {
+    let mut grid = DynamicGrid::<u8>::new_from_iter(2, 0..4).unwrap();
+    let values: Vec<((usize, usize), &mut u8)> = grid.cells_with_coords_mut().collect();
+    assert_eq!(
+        &values,
+        &[
+            ((0, 0), &mut 0),
+            ((1, 0), &mut 1),
+            ((0, 1), &mut 2),
+            ((1, 1), &mut 3),
+        ]
+    );
+}
+
+#[test]
 fn grid_should_be_thread_safe() {
     assert_thread_safe::<DynamicGrid<i32>>();
 }

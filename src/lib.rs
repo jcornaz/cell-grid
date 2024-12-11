@@ -221,6 +221,26 @@ impl<T> DynamicGrid<T> {
         self.cells.iter_mut()
     }
 
+    /// Returns an iterator over the cells with their corresponding coordinate
+    #[must_use]
+    pub fn cells_with_coords(&self) -> impl DoubleEndedIterator<Item = ((usize, usize), &T)> {
+        self.cells
+            .iter()
+            .enumerate()
+            .map(|(i, cell)| (Self::index_to_coord(i, self.width), cell))
+    }
+
+    /// Returns an mutable iterator over the cells with their corresponding coordinate
+    #[must_use]
+    pub fn cells_with_coords_mut(
+        &mut self,
+    ) -> impl DoubleEndedIterator<Item = ((usize, usize), &mut T)> {
+        self.cells
+            .iter_mut()
+            .enumerate()
+            .map(|(i, cell)| (Self::index_to_coord(i, self.width), cell))
+    }
+
     /// Returns an iterator over the cells in the rectangle that start at col `x`, row `y` and of size given by `width` and `height`
     ///
     /// # Example
